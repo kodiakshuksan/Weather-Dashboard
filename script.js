@@ -1,29 +1,130 @@
 //Javascript
+
+
+//City Search Bar and Getting current Weather
 console.log("hello")
 
 
-  
-//getting Current weather 
-  fetch(
-    'https://api.openweathermap.org/data/2.5/weather?q=Tacoma&appid=335fc46330e5a6ab7ec6dbd91233522c'
-  )
+
+var searchButton = document.querySelector('searchButton');
+console.log(searchButton)
+var cityInput = document.querySelector('city');
+console.log(cityInput)
+var searchResults = document.querySelector('currentWeather');
+var citysWeather = document.querySelector('citysWeather');
+
+var formSubmitHandler = function (event) {
+  event.preventDefault();
+
+  var cityName = cityInput.value.trim();
+
+  if (cityName) {
+    getCity(cityName);
+
+    searchResults.textContent = '';
+    cityInput.value = '';
+  } else {
+    alert('Please enter a city!');
+  }
+};
+
+
+
+var getCity = function () {
+  var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city;
+
+  fetch(weatherUrl)
     .then(function (response) {
-      return response.json();
+      if (response.ok) {
+        console.log(response);
+        response.json().then(function (data) {
+          console.log(data);
+          displayResults(data, city);
+        });
+      } else {
+        alert('Error: ' + response.statusText);
+      }
     })
-    .then(function (data) {
-      console.log(data);
+    .catch(function (error) {
+      alert('Unable to connect to Open Weather');
     });
+};
+
+
+
+
+var displayResults = function (city, city) {
+  if (city.length === 0) {
+    searchResults.textContent = 'No weather found.';
+    return;
+  }
+
+  citysWeather.textContent = searchTerm;
+
+  for (var i = 0; i < data.length; i++) {
+    
+    var weather = data[i].main + '/' + data[i].temp;
+    return;
+
+    var weatherResults = document.createElement('div');
+    weatherResults.classList = 'list-item flex-row justify-space-between align-center';
+
+    var weatherNow = document.createElement('span');
+    weatherNow.textContent = weatherNow;
+
+    weatherResults.appendChild(weatherNow);
+
+    var statusEl = document.createElement('span');
+    statusEl.classList = 'flex-row align-center';
+
+    if (data[i].open_issues_count > 0) {
+      statusEl.innerHTML =
+        "<i class='fas fa-times status-icon icon-danger'></i>" + data[i].open_issues_count + ' issue(s)';
+    } else {
+      statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
+    }
+
+    weatherResults.appendChild(statusEl);
+
+    searchResults.appendChild(weatherResults);
+  }
+};
+console.log(displayResults)
+
+// searchButton.addEventListener('submit', formSubmitHandler);
+
+  
+
+  
+
+
+
+  
+
+
+
+
+ // getting current weather
+
+ 
+
+    
+
+
+
+
 
 //getting Future Forecast
     fetch(
-      'https://api.openweathermap.org/data/2.5/forecast?q=Tacoma&appid=335fc46330e5a6ab7ec6dbd91233522c'
+      'https://api.openweathermap.org/data/2.5/forecast?q=temp&appid=335fc46330e5a6ab7ec6dbd91233522c'
     )
       .then(function (response) {
         return response.json();
       })
-      .then(function (data) {
-        console.log(data);
-      });
+        .then(function (data) {
+          console.log(data);
+        });
+          
 
 
       //getting uv index
@@ -51,7 +152,7 @@ console.log("hello")
 // defining time
 
       fetch(
-        'https://api.openweathermap.org/data/2.5/onecall?lat=47.2529&lon=-122.443&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c'
+        'https://api.openweathermap.org/data/2.5/onecall?lat=47.2529&lon=-122.4443&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c'
       )
         .then(function (response) {
           return response.json();
@@ -64,107 +165,7 @@ console.log("hello")
 
 
 
-
-
-// fetch(
-//   // Explain each parameter in comments below.
-//   'https://api.github.com/repos/nodejs/node/issues?per_page=10&state=open&sort=created&direction=desc'
-// )
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-// // Parameter explanation.
-// The per_page parameter will limit the results base per page.
-// The state parameter r
-
-
-
-
   
 
-      // var searchFormEl = document.querySelector('#search-form');
-
-      // function handleSearchFormSubmit(event) {
-      //   event.preventDefault();
-      
-      //   var searchInputVal = document.querySelector('#search-input').value;
-      //   var formatInputVal = document.querySelector('#format-input').value;
-      
-      //   if (!searchInputVal) {
-      //     console.error('You need a search input value!');
-      //     return;
-      //   }
-      
-      //   var queryString = './search-results.html?q=' + searchInputVal + '&format=' + formatInputVal;
-      
-      //   location.assign(queryString);
-      // }
-      
-      // searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-      
-
-  
-    
 
 
-
-
-
-
-
-
-
-
-
-
-// fetch(
-//   // Explain each parameter in comments below.
-//   'https://api.github.com/repos/nodejs/node/issues?per_page=10&state=open&sort=created&direction=desc'
-// )
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-// // Parameter explanation.
-// The per_page parameter will limit the results base per page.
-// The state parameter r
-
-
- // getting upto date future forecast connect to files
-      // fetch(
-      //   'http://bulk.openweathermap.org/snapshot/{BULK_FILE_NAME}?appid=335fc46330e5a6ab7ec6dbd91233522c'
-      // )
-      //   .then(function (response) {
-      //     return response.json();
-      //   })
-      //   .then(function (data) {
-      //     console.log(data);
-      //   });
-
-      // getting all cities connect to files
-      // fetch(
-      //   'http://bulk.openweathermap.org/snapshot/{BULK_FILE_NAME}?appid=335fc46330e5a6ab7ec6dbd91233522c'
-      // )
-      //   .then(function (response) {
-      //     return response.json();
-      //   })
-      //   .then(function (data) {
-      //     console.log(data);
-      //   });
-
-        
-  // getting upto date current forecast connect to files
-      // fetch(
-      //   'http://bulk.openweathermap.org/snapshot/{BULK_FILE_NAME}?appid=335fc46330e5a6ab7ec6dbd91233522c'
-      // )
-      //   .then(function (response) {
-      //     return response.json();
-      //   })
-      //   .then(function (data) {
-      //     console.log(data);
-      //   });
