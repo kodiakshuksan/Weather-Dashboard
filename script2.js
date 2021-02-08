@@ -5,45 +5,174 @@
 console.log("hello")
 
 
-//var cityUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c');
 
 
-var searchForCity = $(".searchButton").click(function (event) {
-  // var city = $("userCity.form-control.me-2").value;
-  // console.log(city)
+//var cityInput = document.getElementById("userCity").placeholder;
+//var searchValue = userCity.valueOf();
 
-  var cityUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
-  var name = document.getElementById("userCity").value;
-  name =
-    fetch(
-      'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c'
-    )
-      .then(function (response) {
+//var city = cityInput.value;
+
+
+
+const cityUrl = "https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial+&appid=335fc46330e5a6ab7ec6dbd91233522c";
+
+fetch(
+    cityUrl
+)
+    .then(function (response) {
         return response.json();
-      })
-      .then(function (data) {
+    })
+    .then(function (data) {
         console.log(data);
-        console.log(userCity);
-      })
-})
+    });
+
+fetch(
+    cityUrl
+)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        var dataObj = 
+    });
+
+
+
+// gets data from API and sets the content of #result div
+const getData = function () {
+    result.innerText = 'Loading....'
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c')
+        .then(res => res.json())
+    console.log(result)
+        .then(data => {
+            result.innerText = JSON.stringify(data)
+        })
+        .catch(error => console.log(error));
+}
+// add event listener for #fetchdata button
+searchButton.addEventListener('click', getData);
+
+
+// var weatherCity = $(".searchButton").click(function userCity(event) {
+//     var cityInput =
+//         document.getElementById("userCity").value;
+//     document.getElementById(
+//         "cityWeather").innerHTML = userCity;
+//     console.log(userCity)
+
+// do something
+
+// });
+// fetch(cityUrl, fetchParams)
+//     .then(res => {
+//         if (!res.ok) {
+//             throw new Error(res.statusText);
+//         }
+//         return res.json();
+//     })
+//     .then(data => {
+//         const weatherData = data;
+//         const weatherInfo = [];
+//         weatherData.forEach(function (getData) {
+//             weatherInfo.push([name.city, parseInt(main.temp)]);
+//         })
+//             .catch(err => {
+//                 console.log("Error Getting Data From Star Wars API");
+//             });
+
+
+
+
+
+
+// var searchCity = $(".searchButton").click(function (event) {
+//     // var city = $("userCity.form-control.me-2").value;
+//     // console.log(city)
+
+//     fetch(
+//         cityUrl
+//     )
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data);
+//         })
+// })
 // console.log($("#userCity").value);
 
 // getting Future Forecast
 //var Tacoma = document.getElementById("userCity").value;
-fetch(
-  'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c'
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    var tacomaWeather = data;
-    console.log(tacomaWeather);
-  });
+// fetch(
+//     cityUrl
+// )
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     });
 
 
-console.log(searchForCity)
+
+
+// fetch(
+//     cityUrl
+// )
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     });
+
+
+
+// fetch(
+
+// )
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     });
+
+
+// fetch("broken-url")
+//     .then(response => console.log(response))
+//     .catch(error => console.log(error));
+
+
+// fetch(
+//     cityUrl
+// )
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     });
+
+// fetch(
+//     cityUrl
+// )
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (dataname) {
+//         console.log(data.name);
+//     });
+
+
+
+
+
+// document.getElementById("searchButton").addEventListener("click", weatherCity);
+// document.getElementById("searchButton").addEventListener("click", searchCity);
+
 
 
 // var searchForm = document.querySelector('searchForm');
