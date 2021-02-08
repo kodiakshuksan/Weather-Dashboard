@@ -58,62 +58,71 @@ var responseText = document.getElementById('response-text');
 var redirectUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=/' + tacoma + '/&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
 
 fetch(badRequestUrl).then(function (response) {
-    if (response.status === 404) {
-        response.replace.redirectUrl()
-    } else {
-        return response.json();
-        console.log(response)
-    }
-});
-
-function getWeatherApi(request) {
     var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=/' + tacoma + '/&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
-    fetch(weathertUrl)
-        .then(function (response) {
-            // Check the console first to see the response.status
-            console.log(response.status);
-            // Then write the conditional based on that response.status value
-            // Make sure to display the response on the page
-        })
+    if (response.status === 404) {
+        fetch(weatherUrl)
+            .then(function (response) {
+                console.log(response.status);
+            .then(function response(data) {
+                    console.log(data)
+                }
+     else 
+
+     .then(function (response) {
+                    console.log(response.status);
         .then(function (data) {
-            console.log(data);
-        });
-}
+                        console.log(data)
+
+                        return response.json() {
+                            console.log(response)
+
+                        };
+
+                        function getWeatherApi(request) {
+                            var weatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=/' + tacoma + '/&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
+                            fetch(weathertUrl)
+                                .then(function (response) {
+                                    console.log(response.status);
+                                })
+                                .then(function (data) {
+                                    console.log(data);
+                                });
+                        }
 
 
-var displayWeather = function (weather, searchTerm) {
-    if (weather.length === 0) {
-        ContainerEl.textContent = 'No weather found.';
-        return;
-    }
+                        var displayWeather = function (weather, searchTerm) {
+                            if (weather.length === 0) {
+                                ContainerEl.textContent = 'No weather found.';
+                                return;
+                            }
 
-    citySearchTerm.textContent = searchTerm;
+                            citySearchTerm.textContent = searchTerm;
 
-    for (var i = 0; i < weather.length; i++) {
-        var repoName = weather[i].name.city + '/' + weather[i].name;
+                            for (var i = 0; i < weather.length; i++) {
+                                var repoName = weather[i].name.city + '/' + weather[i].name;
 
-        var cityEl = document.createElement('div');
-        cityEl.classList = 'list-item flex-row justify-space-between align-center';
+                                var cityEl = document.createElement('div');
+                                cityEl.classList = 'list-item flex-row justify-space-between align-center';
 
-        var weatherEl = document.createElement('span');
-        weatherEl.textContent = cityName;
+                                var weatherEl = document.createElement('span');
+                                weatherEl.textContent = cityName;
 
-        cityEl.appendChild(weatherEl);
+                                cityEl.appendChild(weatherEl);
 
-        var statusEl = document.createElement('span');
-        statusEl.classList = 'flex-row align-center';
+                                var statusEl = document.createElement('span');
+                                statusEl.classList = 'flex-row align-center';
 
-        if (weather[i].open_issues_count > 0) {
-            statusEl.innerHTML =
-                "<i class='fas fa-times status-icon icon-danger'></i>" + weather[i].open_issues_count + ' issue(s)';
-        } else {
-            statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-        }
+                                if (weather[i].open_issues_count > 0) {
+                                    statusEl.innerHTML =
+                                        "<i class='fas fa-times status-icon icon-danger'></i>" + weather[i].open_issues_count + ' issue(s)';
+                                } else {
+                                    statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
+                                }
 
-        weatherEl.appendChild(statusEl);
+                                weatherEl.appendChild(statusEl);
 
-        ContainerEl.appendChild(weatherEl);
-    }
-};
+                                ContainerEl.appendChild(weatherEl);
+                            }
+                        };
 
-searchButton.addEventListener('submit', formSubmitHandler);
+                        searchButton.addEventListener('submit', formSubmitHandler);
