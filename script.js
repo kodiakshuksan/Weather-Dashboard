@@ -1,3 +1,5 @@
+
+
 //Puts label on Search Button id
 const searchButton = document.getElementById("searchButton");
 
@@ -22,7 +24,7 @@ const getWeather = (city) => {
     document.getElementById("temp").innerHTML = data.main.temp;
     document.getElementById("humidity").innerHTML = data.main.humidity;
     document.getElementById("wind").innerHTML = data.wind.speed + 'mph';
-    document.getElementById("icon").innerHTML = data.weather[0].icon;
+    //document.getElementById("icon").innerHTML = data.weather[0].icon;
     document.getElementById("lat").innerHTML = data.coord.lat;
     document.getElementById("lon").innerHTML = data.coord.lon;
     const lat = data.coord.lat;
@@ -78,15 +80,57 @@ const fiveDayForecast = (city) => {
     document.getElementById("icon3").innerHTML = data.list[16].weather[0].icon;
     document.getElementById("icon4").innerHTML = data.list[24].weather[0].icon;
     document.getElementById("icon5").innerHTML = data.list[32].weather[0].icon;
+
+    //Display icons using icon code to make URL to get icon
+    const iconCode = data.list[0].weather[0].icon;
+    console.log(iconCode)
+    const iconUrl =  'http:openweathermap.org/img/wn/'+ iconCode + '@2x.png';
+    console.log(iconUrl)
+
+    document.getElementById("icon").src = iconUrl;
+
+    //document.getElementById("icon").innerHTML = window.open(iconUrl)
+
+  //const x = document.getElementById("icon");
+  
+  //document.getElementById("picture").innerHTML = iconUrl;
+
+
+//document.getElementsByID("icon").innerHTML = imgSpot;
+//console.log(imgSpot)
+    
+    
+
+//Display Icons
+    //Five Day Forecast Icons
+    // document.getElementById("icon1").innerHTML = data.list[0].weather[0].icon;
+    // document.getElementById("icon2").innerHTML = data.list[8].weather[0].icon;
+    // document.getElementById("icon3").innerHTML = data.list[16].weather[0].icon;
+    // document.getElementById("icon4").innerHTML = data.list[24].weather[0].icon;
+    // document.getElementById("icon5").innerHTML = data.list[32].weather[0].icon;
+
+
+    //Get Dates for Five Day forecast
+    document.getElementById("day2").innerHTML = data.list[0].dt_txt;
+    document.getElementById("day3").innerHTML = data.list[8].dt_txt;
+    document.getElementById("day4").innerHTML = data.list[16].dt_txt;
+    document.getElementById("day5").innerHTML = data.list[24].dt_txt;
+    document.getElementById("day6").innerHTML = data.list[32].dt_txt;
   });
 }
+
+// var iconCode = data.weather[0].icon;
+// and then use that to construct a url which points to the icon,
+
+// var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+
+
 
 //create history bar
 // var stateObj = { foo: "bar" };
 // history.pushState(stateObj, "page 2", "bar.html");
 
 
-//create icons?
 
 //Displays Formal Date and time
 const makeWeek = () => {
@@ -100,15 +144,4 @@ document.getElementById("day2").innerHTML = d;
 makeWeek();
 
 
-//display days of week or date on weather dashboard
-// var d = new Date();
-// var n = d.getDay();
-
-
-
-//creates days of weeks by setting up the time in the div ahead of time using Luxon?
-//DateTime.now().toFormat('yyyy LLL dd');
-//console.log(dayOne) //=> '2017 Apr 22'
-// DateTime.now().setLocale('fr').toFormat('yyyy LLL dd') //=> '2017 avr. 22'
-// DateTime.now().toFormat('yyyy LLL dd', { locale: "fr" }) //=> '2017 avr. 22'
-// DateTime.now().toFormat("HH 'hours and' mm 'minutes'") //=> '20 hours and 55 minutes'
+  
