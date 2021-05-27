@@ -8,7 +8,7 @@ searchButton.addEventListener("click", function(event){
 const cityInput = document.getElementById("userCity").value;
 getWeather(cityInput);
 fiveDayForecast(cityInput);
-getUvIndex();
+//getUvIndex(cityInput);
 })
 
 
@@ -21,8 +21,27 @@ const getWeather = (city) => {
     document.getElementById("city").innerHTML = data.name;
     document.getElementById("temp").innerHTML = data.main.temp;
     document.getElementById("humidity").innerHTML = data.main.humidity;
-    document.getElementById("wind").innerHTML = data.wind.speed;
+    document.getElementById("wind").innerHTML = data.wind.speed + 'mph';
     document.getElementById("icon").innerHTML = data.weather[0].icon;
+    document.getElementById("lat").innerHTML = data.coord.lat;
+    document.getElementById("lon").innerHTML = data.coord.lon;
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+    console.log(lat)
+    console.log(lon)
+    getUvIndex(lat, lon);
+  });
+}
+//console.log(document.getElementById("lat".value))
+    
+    //Gets UV Index using latitude and longitude from above
+getUvIndex = (lat, lon) => {
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c')
+  .then(response => response.json())
+  .then(data => {
+    //console.log(data.current)
+    //console.log(data.lat)
+    document.getElementById("uvIndex").innerHTML = data.current.uvi;
   });
 }
 
@@ -59,31 +78,37 @@ const fiveDayForecast = (city) => {
     document.getElementById("icon3").innerHTML = data.list[16].weather[0].icon;
     document.getElementById("icon4").innerHTML = data.list[24].weather[0].icon;
     document.getElementById("icon5").innerHTML = data.list[32].weather[0].icon;
-
-    //Gets UV Index
-    // getUvIndex = (city) => {
-    //   fetch('https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data.list)
-    //   });
-    // }
-
-
-
-  });
-}
-
-//Gets UV Index
-getUvIndex = () => {
-  fetch('https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.current.uvi)
   });
 }
 
 //create history bar
-//create icons
-//create uv index
+// var stateObj = { foo: "bar" };
+// history.pushState(stateObj, "page 2", "bar.html");
+
+
+//create icons?
+
+//Displays Formal Date and time
+const makeWeek = () => {
+const d = new Date();
+const n = d.getDay();
+console.log(d)
+const day1 = d
+document.getElementById("day1").innerHTML = d;
+document.getElementById("day2").innerHTML = d;
+}
+makeWeek();
+
+
 //display days of week or date on weather dashboard
+// var d = new Date();
+// var n = d.getDay();
+
+
+
+//creates days of weeks by setting up the time in the div ahead of time using Luxon?
+//DateTime.now().toFormat('yyyy LLL dd');
+//console.log(dayOne) //=> '2017 Apr 22'
+// DateTime.now().setLocale('fr').toFormat('yyyy LLL dd') //=> '2017 avr. 22'
+// DateTime.now().toFormat('yyyy LLL dd', { locale: "fr" }) //=> '2017 avr. 22'
+// DateTime.now().toFormat("HH 'hours and' mm 'minutes'") //=> '20 hours and 55 minutes'
