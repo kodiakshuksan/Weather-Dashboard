@@ -1,191 +1,89 @@
-//Javascript for Weather Dashboard
+//Puts label on Search Button id
+const searchButton = document.getElementById("searchButton");
 
-
-//City Search Bar and Getting current Weather
-console.log("hello")
-
-
-//var cityUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
-
-
-var searchForCity = $(".searchButton").click(function (event) {
-  // var city = $("userCity.form-control.me-2").value;
-  // console.log(city)
-
-  var cityUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c';
-  var name = document.getElementById("userCity").value;
-  name =
-    fetch(
-      'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c'
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        console.log(userCity);
-      })
+//Adds Functionality and Event Listener to button
+searchButton.addEventListener("click", function(event){
+  event.preventDefault();
+//Gets the search Value and runs weather search
+const cityInput = document.getElementById("userCity").value;
+getWeather(cityInput);
+fiveDayForecast(cityInput);
+getUvIndex();
 })
-// console.log($("#userCity").value);
 
-// getting Future Forecast
-//var Tacoma = document.getElementById("userCity").value;
-fetch(
-  'https://api.openweathermap.org/data/2.5/forecast?q=tacoma&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c'
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    var tacomaWeather = data;
-    console.log(tacomaWeather);
+
+//Finds Current Weather By City
+const getWeather = (city) => {
+  fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    document.getElementById("city").innerHTML = data.name;
+    document.getElementById("temp").innerHTML = data.main.temp;
+    document.getElementById("humidity").innerHTML = data.main.humidity;
+    document.getElementById("wind").innerHTML = data.wind.speed;
+    document.getElementById("icon").innerHTML = data.weather[0].icon;
   });
+}
 
+//Gets weather for five days in the future
+const fiveDayForecast = (city) => {
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.list)
+    //5 Day Temp
+    document.getElementById("temp1").innerHTML = data.list[0].main.temp;
+    document.getElementById("temp2").innerHTML = data.list[8].main.temp;
+    document.getElementById("temp3").innerHTML = data.list[16].main.temp;
+    document.getElementById("temp4").innerHTML = data.list[24].main.temp;
+    document.getElementById("temp5").innerHTML = data.list[32].main.temp;
 
-console.log(searchForCity)
+    //5 Day Humidity
+    document.getElementById("humidity1").innerHTML = data.list[0].main.humidity;
+    document.getElementById("humidity2").innerHTML = data.list[8].main.humidity;
+    document.getElementById("humidity3").innerHTML = data.list[16].main.humidity;
+    document.getElementById("humidity4").innerHTML = data.list[24].main.humidity;
+    document.getElementById("humidity5").innerHTML = data.list[32].main.humidity;
 
+    //5 Day Wind Speed
+    document.getElementById("wind1").innerHTML = data.list[0].wind.speed + 'mph';
+    document.getElementById("wind2").innerHTML = data.list[8].wind.speed + 'mph';
+    document.getElementById("wind3").innerHTML = data.list[16].wind.speed + 'mph';
+    document.getElementById("wind4").innerHTML = data.list[24].wind.speed + 'mph';
+    document.getElementById("wind5").innerHTML = data.list[32].wind.speed + 'mph';
 
-// var searchForm = document.querySelector('searchForm');
-// console.log(searchForm)
-// var cityInput = document.querySelector('city');
-// console.log(cityInput)
-// var searchResults = document.querySelector('currentWeather');
-// var citysWeather = document.querySelector('citysWeather');
+    //Five Day Forecast Icons
+    document.getElementById("icon1").innerHTML = data.list[0].weather[0].icon;
+    document.getElementById("icon2").innerHTML = data.list[8].weather[0].icon;
+    document.getElementById("icon3").innerHTML = data.list[16].weather[0].icon;
+    document.getElementById("icon4").innerHTML = data.list[24].weather[0].icon;
+    document.getElementById("icon5").innerHTML = data.list[32].weather[0].icon;
 
-// var formSubmitHandler = function (event) {
-//   event.preventDefault();
-
-//   var cityName = cityInput.value.trim();
-
-//   if (cityName) {
-//     getCity(cityName);
-
-//     searchResults.textContent = '';
-//     cityInput.value = '';
-//   } else {
-//     alert('Please enter a city!');
-//   }
-// };
-
-
-
-// var getCity = function () {
-//   var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city;
-
-//   fetch(weatherUrl)
-//     .then(function (response) {
-//       if (response.ok) {
-//         console.log(response);
-//         response.json().then(function (data) {
-//           console.log(data);
-//           displayResults(data, city);
-//         });
-//       } else {
-//         alert('Error: ' + response.statusText);
-//       }
-//     })
-//     .catch(function (error) {
-//       alert('Unable to connect to Open Weather');
-//     });
-// };
+    //Gets UV Index
+    // getUvIndex = (city) => {
+    //   fetch('https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data.list)
+    //   });
+    // }
 
 
 
+  });
+}
 
-// var displayResults = function (city, city) {
-//   if (city.length === 0) {
-//     searchResults.textContent = 'No weather found.';
-//     return;
-//   }
+//Gets UV Index
+getUvIndex = () => {
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.current.uvi)
+  });
+}
 
-//   citysWeather.textContent = searchTerm;
-
-//   for (var i = 0; i < data.length; i++) {
-
-//     var weather = data[i].main + '/' + data[i].temp;
-//     return;
-
-// var weatherResults = document.createElement('div');
-// weatherResults.classList = 'list-item flex-row justify-space-between align-center';
-
-// var weatherNow = document.createElement('span');
-// weatherNow.textContent = weatherNow;
-
-// weatherResults.appendChild(weatherNow);
-
-// var statusEl = document.createElement('span');
-// statusEl.classList = 'flex-row align-center';
-
-// if (data[i].open_issues_count > 0) {
-//   statusEl.innerHTML =
-//     "<i class='fas fa-times status-icon icon-danger'></i>" + data[i].open_issues_count + ' issue(s)';
-// } else {
-//   statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-// }
-
-// weatherResults.appendChild(statusEl);
-
-// searchResults.appendChild(weatherResults);
-//   }
-// };
-// console.log(displayResults)
-
-//searchForm.addEventListener('submit', formSubmitHandler);
-
-
-//getting uv index
-// fetch(
-//   'https://api.openweathermap.org/data/2.5/uvi?lat=47.2529&lon=-122.4443&appid=335fc46330e5a6ab7ec6dbd91233522c'
-// )
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-
-//defining units in Fahrenheit
-// fetch(
-//   'https://api.openweathermap.org/data/2.5/onecall?lat=47.2529&lon=-122.4443&units=imperial&appid=335fc46330e5a6ab7ec6dbd91233522c'
-// )
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-
-// defining time
-
-// fetch(
-//   'https://api.openweathermap.org/data/2.5/onecall?lat=47.2529&lon=-122.4443&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c'
-// )
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data.lat);
-//   });
-
-      //     let response = fetch('https://api.openweathermap.org/data/2.5/onecall?lat=47.2529&lon=-122.4443&exclude=hourly,daily&appid=335fc46330e5a6ab7ec6dbd91233522c',
-      //       {
-      //           method: 'POST',
-      //           mode: 'cors',
-      //           body: "param=" + paramVar,
-      //           headers: {
-      //             'Content-Type': 'application/json'
-      //           }
-      //       }
-      // ).then(response => response.json());
-
-
-
-
-
-
-
-
-
-
-
+//create history bar
+//create icons
+//create uv index
+//display days of week or date on weather dashboard

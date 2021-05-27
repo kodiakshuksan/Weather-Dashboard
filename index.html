@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <title>Weather Dashbooard</title>
+  <title>Weather Dashboard</title>
 </head>
 
 <body>
@@ -18,16 +18,25 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Weather Now!</a>
+
         <form id="searchForm" class="d-flex">
           <input id="userCity" class="form-control me-2" type="text" placeholder="Search by City" aria-label="Search">
-          <button id="searchButton" class="btn btn-outline-success" type="submit">Search</button>
+          <button id="searchButton" class="btn btn-outline-success">Search</button>
         </form>
+        <h1 id="test"></h1>
       </div>
     </nav>
   </header>
   <div>
     <div class="row">
-      <div id="result" class="col bg-success" style="height:75px"></div>
+      <div id="result" class="col bg-success" style="height:75px">
+        <div id="city"></div>
+        <div id="temp"></div>
+        <div id="humidity"></div>
+        <div id="wind"></div>
+        <div id="uvIndex"></div>
+        <div id="icon"></div>
+      </div>
     </div>
     <span id="repo-search-term"></span>
     <div class="row">
@@ -37,23 +46,46 @@
       <div class="col bg-alert">Five Day Forecast</div>
     </div>
     <div class="row">
-      <div id="day1" class="col bg-danger" style="height:250px">Day 1</div>
-      <div id="day2" class="col bg-warning" style="height:250px">Day 2</div>
-      <div id="day3" class="col bg-info" style="height:250px">Day 3</div>
-      <div id="day4" class="col bg-warning" style="height:250px">Day 4</div>
-      <div id="day5" class="col bg-info" style="height:250px">Day 5</div>
+      <div id="day1" class="col bg-danger" style="height:250px">Day 1
+        <div id="temp1"></div>
+        <div id="humidity1"></div>
+        <div id="wind1"></div>
+        <div id="uvIndex1"></div>
+        <div id="icon1"></div>
+      </div>
+
+      <div id="day2" class="col bg-warning" style="height:250px">Day 2
+        <div id="temp2"></div>
+        <div id="humidity2"></div>
+        <div id="wind2"></div>
+        <div id="uvIndex2"></div>
+        <div id="icon2"></div>
+      </div>
+
+      <div id="day3" class="col bg-info" style="height:250px">Day 3
+        <div id="temp3"></div>
+        <div id="humidity3"></div>
+        <div id="wind3"></div>
+        <div id="uvIndex3"></div>
+        <div id="icon3"></div>
+      </div>
+      <div id="day4" class="col bg-warning" style="height:250px">Day 4
+        <div id="temp4"></div>
+        <div id="humidity4"></div>
+        <div id="wind4"></div>
+        <div id="uvIndex4"></div>
+        <div id="icon4"></div>
+
+      </div>
+      <div id="day5" class="col bg-info" style="height:250px">Day 5
+        <div id="temp5"></div>
+        <div id="humidity5"></div>
+        <div id="wind5"></div>
+        <div id="uvIndex5"></div>
+        <div id="icon5"></div>
+      </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -63,7 +95,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
