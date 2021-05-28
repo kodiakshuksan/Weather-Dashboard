@@ -8,8 +8,12 @@ searchButton.addEventListener("click", function(event){
   event.preventDefault();
 //Gets the search Value and runs weather search
 const cityInput = document.getElementById("userCity").value;
+//document.getElementById("searchHistory").innerHTML = cityInput;
+//document.getElementById("searchHistory1".innerHTML) = window.history;
 getWeather(cityInput);
 fiveDayForecast(cityInput);
+//createHistoryList(cityInput);
+//createHistory();
 //getUvIndex(cityInput);
 })
 
@@ -89,26 +93,7 @@ const fiveDayForecast = (city) => {
 
     document.getElementById("icon").src = iconUrl;
 
-    //document.getElementById("icon").innerHTML = window.open(iconUrl)
-
-  //const x = document.getElementById("icon");
   
-  //document.getElementById("picture").innerHTML = iconUrl;
-
-
-//document.getElementsByID("icon").innerHTML = imgSpot;
-//console.log(imgSpot)
-    
-    
-
-//Display Icons
-    //Five Day Forecast Icons
-    // document.getElementById("icon1").innerHTML = data.list[0].weather[0].icon;
-    // document.getElementById("icon2").innerHTML = data.list[8].weather[0].icon;
-    // document.getElementById("icon3").innerHTML = data.list[16].weather[0].icon;
-    // document.getElementById("icon4").innerHTML = data.list[24].weather[0].icon;
-    // document.getElementById("icon5").innerHTML = data.list[32].weather[0].icon;
-
 
     //Get Dates for Five Day forecast
     document.getElementById("day2").innerHTML = data.list[0].dt_txt;
@@ -119,29 +104,52 @@ const fiveDayForecast = (city) => {
   });
 }
 
-// var iconCode = data.weather[0].icon;
-// and then use that to construct a url which points to the icon,
-
-// var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-
-
-
-//create history bar
-// var stateObj = { foo: "bar" };
-// history.pushState(stateObj, "page 2", "bar.html");
-
-
-
 //Displays Formal Date and time
 const makeWeek = () => {
-const d = new Date();
-const n = d.getDay();
-console.log(d)
-const day1 = d
-document.getElementById("day1").innerHTML = d;
-document.getElementById("day2").innerHTML = d;
-}
-makeWeek();
+  const d = new Date();
+  const n = d.getDay();
+  console.log(d)
+  const day1 = d
+  document.getElementById("day1").innerHTML = d;
+  document.getElementById("day2").innerHTML = d;
+  }
+  makeWeek();
+  
+
+  // const createHistoryList = () => {
+  //   const cityInput = document.getElementById("userCity").value;
+  //   history.back();//for previous page
+  //   history.forward();//for next page
+  //   history.go(2);//for next 2nd page
+  //   history.go(-2);//for previous 2nd page
+  // // console.log(window.history(-1))
+  // }
 
 
+
+
+  historyButton.addEventListener("click", function(event){
+    event.preventDefault();
+  //Gets the search Value and runs weather search
+  const cityInput = document.getElementById("userCity").value;
+  const oldSearches = {
+    search: cityInput 
+  };
+  localStorage.setItem("oldSearches", JSON.stringify(oldSearches));
+  renderLastSearch();
+
+  function renderLastSearch() {
+    var lastSearch = JSON.parse(localStorage.getItem("oldSearches"));
+    if (lastSearch !== null) {
+      document.getElementById("searchHistory").textContent = lastSearch.search + 
+      " received a/an " + lastSearch.cityInput
+    }
+  }
+
+  //history.back(cityInput);//for previous page
+  //history.forward();//for next page
+  //history.go(2);//for next 2nd page
+ 
+  
+  })
   
