@@ -12,6 +12,7 @@ const cityInput = document.getElementById("userCity").value;
 //document.getElementById("searchHistory1".innerHTML) = window.history;
 getWeather(cityInput);
 fiveDayForecast(cityInput);
+getSearch(cityInput);
 //createHistoryList(cityInput);
 //createHistory();
 //getUvIndex(cityInput);
@@ -25,12 +26,13 @@ const getWeather = (city) => {
   .then(data => {
     console.log(data)
     document.getElementById("city").innerHTML = data.name;
-    document.getElementById("temp").innerHTML = data.main.temp;
+    //document.getElementById("cityA").innerHTML = data.name;
+    document.getElementById("temp").innerHTML = data.main.temp + "Degrees";
     document.getElementById("humidity").innerHTML = data.main.humidity + '% Humidity';
     document.getElementById("wind").innerHTML = data.wind.speed + 'mph';
     //document.getElementById("icon").innerHTML = data.weather[0].icon;
-    document.getElementById("lat").innerHTML = data.coord.lat;
-    document.getElementById("lon").innerHTML = data.coord.lon;
+    //document.getElementById("lat").innerHTML = data.coord.lat;
+    //document.getElementById("lon").innerHTML = data.coord.lon;
     const lat = data.coord.lat;
     const lon = data.coord.lon;
     console.log(lat)
@@ -47,7 +49,12 @@ getUvIndex = (lat, lon) => {
   .then(data => {
     //console.log(data.current)
     //console.log(data.lat)
-    document.getElementById("uvIndex").innerHTML = data.current.uvi;
+    document.getElementById("uvIndex").innerHTML = data.current.uvi + "uvi";
+    document.getElementById("uvIndex1").innerHTML = data.current.uvi + "uvi";
+    document.getElementById("uvIndex2").innerHTML = data.current.uvi + "uvi";
+    document.getElementById("uvIndex3").innerHTML = data.current.uvi + "uvi";
+    document.getElementById("uvIndex4").innerHTML = data.current.uvi + "uvi";
+    document.getElementById("uvIndex5").innerHTML = data.current.uvi + "uvi";
   });
 }
 
@@ -58,11 +65,11 @@ const fiveDayForecast = (city) => {
   .then(data => {
     console.log(data.list)
     //5 Day Temp
-    document.getElementById("temp1").innerHTML = data.list[0].main.temp + 'Degrees';
-    document.getElementById("temp2").innerHTML = data.list[8].main.temp + 'Degrees';
-    document.getElementById("temp3").innerHTML = data.list[16].main.temp + 'Degrees';
-    document.getElementById("temp4").innerHTML = data.list[24].main.temp + 'Degrees';
-    document.getElementById("temp5").innerHTML = data.list[32].main.temp + 'Degrees';
+    document.getElementById("temp1").innerHTML = data.list[0].main.temp + ' ' + 'Degrees';
+    document.getElementById("temp2").innerHTML = data.list[8].main.temp + ' ' + 'Degrees';
+    document.getElementById("temp3").innerHTML = data.list[16].main.temp + ' ' + 'Degrees';
+    document.getElementById("temp4").innerHTML = data.list[24].main.temp + ' ' + 'Degrees';
+    document.getElementById("temp5").innerHTML = data.list[32].main.temp + ' ' + 'Degrees';
 
     //5 Day Humidity
     document.getElementById("humidity1").innerHTML = data.list[0].main.humidity + '% Humidity';
@@ -121,8 +128,11 @@ const fiveDayForecast = (city) => {
     document.getElementById("icon5").src = iconUrl5;
   
 
+
     //Get Dates for Five Day forecast
-    document.getElementById("day2").innerHTML = data.list[0].dt_txt;
+    document.getElementById("day1").innerHTML = "Today"
+    document.getElementById("tomorrow").innerHTML = "Five Day Forecast- Starting Tomorrow"
+    document.getElementById("day2").innerHTML = data.list[0].dt_txt ;
     document.getElementById("day3").innerHTML = data.list[8].dt_txt;
     document.getElementById("day4").innerHTML = data.list[16].dt_txt;
     document.getElementById("day5").innerHTML = data.list[24].dt_txt;
@@ -130,15 +140,15 @@ const fiveDayForecast = (city) => {
   });
 }
 
-//Displays Formal Date and time
+//Displays Formal Date and time in Header
 const makeWeek = () => {
   const d = new Date();
   const n = d.toDateString();
   console.log(d)
   
   document.getElementById("day1").innerHTML = n;
-  document.getElementById("day2").innerHTML = n;
-  }
+  
+  };
   makeWeek();
   
 
@@ -166,10 +176,10 @@ const makeWeek = () => {
 
   function renderLastSearch() {
     var lastSearch = JSON.parse(localStorage.getItem("oldSearches"));
-    if (lastSearch !== null) {
-      document.getElementById("searchHistory").textContent = lastSearch.search + 
-      " received a/an " + lastSearch.cityInput
-    }
+  //   if (lastSearch !== null) {
+  //     document.getElementById("searchHistory").textContent = lastSearch.search + 
+  //     " received a/an " + lastSearch.cityInput
+  //   }
   }
 
   //history.back(cityInput);//for previous page
@@ -177,5 +187,45 @@ const makeWeek = () => {
   //history.go(2);//for next 2nd page
  
   
-  })
+  
+  
+
+  const getSearch = () => {
+  const past = document.getElementById("past");
+    const back = document.getElementById("back").history.go();
+  // past.innerHTML +=
+  // '<a href="./index2.html">Page 1</a> | '
+  // past.innerHTML +=
+  // '<a href="./index3.html">Page 2</a> | '
+  // past.innerHTML +=
+  // '<a href="./index4.html">Page 3</a>'
+  // past.innerHTML +=
+  // '<br>History Length: ' + history.length
+  
+  
+  
+  past.innerHTML +=
+  '<button onclick="history.back()">Back</button>';
+  }
+})
+  
+  
+//Puts label on Search Button id
+// const searchButton = document.getElementById("searchButton");
+
+// //Adds Functionality and Event Listener to button
+// searchButton.addEventListener("click", function(event){
+//   event.preventDefault();
+// //Gets the search Value and runs weather search
+// const cityInput = document.getElementById("userCity").value;
+// //document.getElementById("searchHistory").innerHTML = cityInput;
+// //document.getElementById("searchHistory1".innerHTML) = window.history;
+// getWeather(cityInput);
+// fiveDayForecast(cityInput);
+// getSearch(cityInput);
+// //createHistoryList(cityInput);
+// //createHistory();
+// //getUvIndex(cityInput);
+// })
+
   

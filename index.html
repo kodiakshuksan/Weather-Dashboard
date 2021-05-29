@@ -24,21 +24,23 @@
           <input id="userCity" class="form-control me-2" type="text" placeholder="Search by City" aria-label="Search">
           <button id="searchButton" class="btn btn-outline-light">Search</button>
         </form>
-        <div>Search History
-   
-          <button id="historyButton" class="btn btn-outline-light">Get Search History</button>
+        <div>
+          <button id="historyButton" class="btn btn-outline-light">Get Past Searches</button>
           <p id="searchHistory"></p>
           <p id="searchHistory1"></p>
         </div>
-        <h1 id="test"></h1>
+      
+        <div id="past"></div>
+        <div id="back"></div>
+
       </div>
     </nav>
   </header>
 
     <div class="row">
-      <div id="result" class="col" style="height:75px">
+      <div id="result" class="col" style="height:75px"><div>
         <div id="day1"></div>
-        <div>
+        
         <div id="city"></div>
         <div id="temp"></div>
         <div id="humidity"></div>
@@ -46,8 +48,7 @@
         <div id="uvIndex"></div>
         <img id="icon" class="icon" src=""/>     
          
-        <div id="lat"></div>
-        <div id="lon"></div>
+      
         </div>
       </div>
     </div>
@@ -56,7 +57,9 @@
       <div id="response-text" class="col bg-alert" style="height:275px"></div>
     </div>
     <div class="row">
-      <div class="col bg-alert">Five Day Forecast</div>
+      <div id="tomorrow" class="col bg-alert">Five Day Forecast</div>
+    </div>
+    <div id="city" class="col bg-alert"></div>
     </div>
     <div class="row">
       <div class="col bg-danger" style="height:250px">
@@ -69,16 +72,17 @@
       
       </div>
 
-      <div class="col bg-warning" style="height:250px">Day 2
+      <div class="col bg-warning" style="height:250px">
         <div id="day3"></div>
         <div id="temp2"></div>
         <div id="humidity2"></div>
         <div id="wind2"></div>
         <div id="uvIndex2"></div>
+        <div></div>
         <img id="icon2" class="icon" src=""/>    
       </div>
 
-      <div class="col bg-info" style="height:250px">Day 3
+      <div class="col bg-info" style="height:250px">
         <div id="day4"></div>
         <div id="temp3"></div>
         <div id="humidity3"></div>
@@ -86,7 +90,7 @@
         <div id="uvIndex3"></div>
         <img id="icon3" class="icon" src=""/>    
       </div>
-      <div class="col bg-warning" style="height:250px">Day 4
+      <div class="col bg-warning" style="height:250px">
         <div id="day5"></div>
         <div id="temp4"></div>
         <div id="humidity4"></div>
@@ -95,7 +99,7 @@
         <img id="icon4" class="icon" src=""/>    
 
       </div>
-      <div class="col bg-info" style="height:250px">Day 5
+      <div class="col bg-info" style="height:250px">
         <div id="day6"></div>
         <div id="temp5"></div>
         <div id="humidity5"></div>
@@ -103,6 +107,7 @@
         <div id="uvIndex5"></div>
         <img id="icon5" class="icon" src=""/>    
       </div>
+      
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -115,6 +120,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
   <script src="./script.js"></script>
+ 
 </body>
 
 </html>

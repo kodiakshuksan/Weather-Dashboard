@@ -1,33 +1,10 @@
 # Weather-Dashboard
+
 by Jennifer Detmering
 
 ## Description
-This is basic weather dashboard that provides a current look at weather conditions and a five-day future forecast. 
 
-## Deployment
-
-
-## Project Image
-
-
-## Technologies 
-For this project I used Visual Studio Code, HTML, CSS, and Javascript.
-
-
-## Challenges
-1/29/2021- research apis cdn
-1/30/2021- added HTML and Javascript file, tried fetched with no luck
-2/1/2021- was able to make a fetch call and get a response started
-thinking about layout and design
-
-## Contributors 
-
-
-
-
-## Description-
-
-### Searches for Books and Saves them to a Book list using Google Books API
+This is basic weather dashboard that provides a current look at weather conditions and a five-day future forecast.
 
 #### [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
 
@@ -46,11 +23,20 @@ thinking about layout and design
 
 ## Usage-
 
-![transactions](pic1.png)
+![home](home.png)
+![results](results.png)
 
-## Technologies Used-
+## Technologies
 
-npm, CSS, JavaScript, node.js, Google Books API, React.js
+For this project I used Visual Studio Code, HTML, CSS, Javascript, and OpenWeather Api.
+
+## Challenges
+
+1/29/2021- research apis cdn
+1/30/2021- added HTML and Javascript file, tried fetched with no luck
+2/1/2021- was able to make a fetch call and get a response started
+thinking about layout and design
+5/29/2021- Still working on the History Feature
 
 ## Credits-
 
@@ -62,7 +48,7 @@ npm, CSS, JavaScript, node.js, Google Books API, React.js
 
 ## Features-
 
-Uses Google API Books to search for books and save them to a reading wish list.
+Uses OpenWeather API to get the current weather, five-day forecast, uvi, wind speed, temp, condition icon, and humidity
 
 ## Questions and Contributions-
 
