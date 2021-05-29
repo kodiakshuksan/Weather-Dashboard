@@ -26,7 +26,7 @@ const getWeather = (city) => {
     console.log(data)
     document.getElementById("city").innerHTML = data.name;
     document.getElementById("temp").innerHTML = data.main.temp;
-    document.getElementById("humidity").innerHTML = data.main.humidity;
+    document.getElementById("humidity").innerHTML = data.main.humidity + '% Humidity';
     document.getElementById("wind").innerHTML = data.wind.speed + 'mph';
     //document.getElementById("icon").innerHTML = data.weather[0].icon;
     document.getElementById("lat").innerHTML = data.coord.lat;
@@ -58,18 +58,18 @@ const fiveDayForecast = (city) => {
   .then(data => {
     console.log(data.list)
     //5 Day Temp
-    document.getElementById("temp1").innerHTML = data.list[0].main.temp;
-    document.getElementById("temp2").innerHTML = data.list[8].main.temp;
-    document.getElementById("temp3").innerHTML = data.list[16].main.temp;
-    document.getElementById("temp4").innerHTML = data.list[24].main.temp;
-    document.getElementById("temp5").innerHTML = data.list[32].main.temp;
+    document.getElementById("temp1").innerHTML = data.list[0].main.temp + 'Degrees';
+    document.getElementById("temp2").innerHTML = data.list[8].main.temp + 'Degrees';
+    document.getElementById("temp3").innerHTML = data.list[16].main.temp + 'Degrees';
+    document.getElementById("temp4").innerHTML = data.list[24].main.temp + 'Degrees';
+    document.getElementById("temp5").innerHTML = data.list[32].main.temp + 'Degrees';
 
     //5 Day Humidity
-    document.getElementById("humidity1").innerHTML = data.list[0].main.humidity;
-    document.getElementById("humidity2").innerHTML = data.list[8].main.humidity;
-    document.getElementById("humidity3").innerHTML = data.list[16].main.humidity;
-    document.getElementById("humidity4").innerHTML = data.list[24].main.humidity;
-    document.getElementById("humidity5").innerHTML = data.list[32].main.humidity;
+    document.getElementById("humidity1").innerHTML = data.list[0].main.humidity + '% Humidity';
+    document.getElementById("humidity2").innerHTML = data.list[8].main.humidity + '% Humidity';
+    document.getElementById("humidity3").innerHTML = data.list[16].main.humidity + '% Humidity';
+    document.getElementById("humidity4").innerHTML = data.list[24].main.humidity + '% Humidity';
+    document.getElementById("humidity5").innerHTML = data.list[32].main.humidity + '% Humidity';
 
     //5 Day Wind Speed
     document.getElementById("wind1").innerHTML = data.list[0].wind.speed + 'mph';
@@ -87,12 +87,38 @@ const fiveDayForecast = (city) => {
 
     //Display icons using icon code to make URL to get icon
     const iconCode = data.list[0].weather[0].icon;
+    const iconCode1 = data.list[0].weather[0].icon;
+    const iconCode2 = data.list[8].weather[0].icon;
+    const iconCode3 = data.list[16].weather[0].icon;
+    const iconCode4 = data.list[24].weather[0].icon;
+    const iconCode5 = data.list[32].weather[0].icon;
     console.log(iconCode)
-    const iconUrl =  'http:openweathermap.org/img/wn/'+ iconCode + '@2x.png';
+    console.log(iconCode1)
+    console.log(iconCode2)
+    console.log(iconCode3)
+    console.log(iconCode4)
+    console.log(iconCode5)
+
+    const iconUrl = 'http:openweathermap.org/img/wn/'+ iconCode + '@2x.png';
+    const iconUrl1 = 'http:openweathermap.org/img/wn/'+ iconCode1 + '@2x.png';
+    const iconUrl2 = 'http:openweathermap.org/img/wn/'+ iconCode2 + '@2x.png';
+    const iconUrl3 = 'http:openweathermap.org/img/wn/'+ iconCode3 + '@2x.png';
+    const iconUrl4 = 'http:openweathermap.org/img/wn/'+ iconCode4 + '@2x.png';
+    const iconUrl5 = 'http:openweathermap.org/img/wn/'+ iconCode5 + '@2x.png';
     console.log(iconUrl)
+    console.log(iconUrl1)
+    console.log(iconUrl2)
+    console.log(iconUrl3)
+    console.log(iconUrl4)
+    console.log(iconUrl5)
 
     document.getElementById("icon").src = iconUrl;
-
+    document.getElementById("icon1").src = iconUrl;
+    document.getElementById("icon1").src = iconUrl1;
+    document.getElementById("icon2").src = iconUrl2;
+    document.getElementById("icon3").src = iconUrl3;
+    document.getElementById("icon4").src = iconUrl4;
+    document.getElementById("icon5").src = iconUrl5;
   
 
     //Get Dates for Five Day forecast
@@ -107,11 +133,11 @@ const fiveDayForecast = (city) => {
 //Displays Formal Date and time
 const makeWeek = () => {
   const d = new Date();
-  const n = d.getDay();
+  const n = d.toDateString();
   console.log(d)
-  const day1 = d
-  document.getElementById("day1").innerHTML = d;
-  document.getElementById("day2").innerHTML = d;
+  
+  document.getElementById("day1").innerHTML = n;
+  document.getElementById("day2").innerHTML = n;
   }
   makeWeek();
   
