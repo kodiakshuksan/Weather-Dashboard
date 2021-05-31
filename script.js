@@ -151,15 +151,15 @@ const makeWeek = () => {
   };
   makeWeek();
   
-
-  // const createHistoryList = () => {
-  //   const cityInput = document.getElementById("userCity").value;
-  //   history.back();//for previous page
-  //   history.forward();//for next page
-  //   history.go(2);//for next 2nd page
-  //   history.go(-2);//for previous 2nd page
-  // // console.log(window.history(-1))
-  // }
+//Developing History Search Tab/Button that will display links to past cities searched
+// const createHistoryList = () => {
+//   const cityInput = document.getElementById("userCity").value;
+//   history.back();//for previous page
+//   history.forward();//for next page
+//   history.go(2);//for next 2nd page
+//   history.go(-2);//for previous 2nd page
+// // console.log(window.history(-1))
+// }
 
 
 
