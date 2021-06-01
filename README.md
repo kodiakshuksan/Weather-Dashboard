@@ -20,7 +20,8 @@ This is basic weather dashboard that provides a current look at weather conditio
 8. [Tests](#tests)
 
 ## Installation-
-[Deployment Link](https://kodiakshuksan.github.io/Weather-Dashboard/)
+
+# [Use Weather Dashboard](https://kodiakshuksan.github.io/Weather-Dashboard/)
 
 ## Usage-
 
