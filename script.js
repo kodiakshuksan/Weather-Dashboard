@@ -151,81 +151,12 @@ const makeWeek = () => {
   };
   makeWeek();
   
-//Developing History Search Tab/Button that will display links to past cities searched
-// const createHistoryList = () => {
-//   const cityInput = document.getElementById("userCity").value;
-//   history.back();//for previous page
-//   history.forward();//for next page
-//   history.go(2);//for next 2nd page
-//   history.go(-2);//for previous 2nd page
-// // console.log(window.history(-1))
-// }
+//To Do: History Search that will display links to past cities searched
 
 
 
 
-  historyButton.addEventListener("click", function(event){
-    event.preventDefault();
-  //Gets the search Value and runs weather search
-  const cityInput = document.getElementById("userCity").value;
-  const oldSearches = {
-    search: cityInput 
-  };
-  localStorage.setItem("oldSearches", JSON.stringify(oldSearches));
-  renderLastSearch();
-
-  function renderLastSearch() {
-    var lastSearch = JSON.parse(localStorage.getItem("oldSearches"));
-  //   if (lastSearch !== null) {
-  //     document.getElementById("searchHistory").textContent = lastSearch.search + 
-  //     " received a/an " + lastSearch.cityInput
-  //   }
-  }
-
-  //history.back(cityInput);//for previous page
-  //history.forward();//for next page
-  //history.go(2);//for next 2nd page
- 
   
   
   
 
-  const getSearch = () => {
-  const past = document.getElementById("past");
-    const back = document.getElementById("back").history.go();
-  // past.innerHTML +=
-  // '<a href="./index2.html">Page 1</a> | '
-  // past.innerHTML +=
-  // '<a href="./index3.html">Page 2</a> | '
-  // past.innerHTML +=
-  // '<a href="./index4.html">Page 3</a>'
-  // past.innerHTML +=
-  // '<br>History Length: ' + history.length
-  
-  
-  
-  past.innerHTML +=
-  '<button onclick="history.back()">Back</button>';
-  }
-})
-  
-  
-//Puts label on Search Button id
-// const searchButton = document.getElementById("searchButton");
-
-// //Adds Functionality and Event Listener to button
-// searchButton.addEventListener("click", function(event){
-//   event.preventDefault();
-// //Gets the search Value and runs weather search
-// const cityInput = document.getElementById("userCity").value;
-// //document.getElementById("searchHistory").innerHTML = cityInput;
-// //document.getElementById("searchHistory1".innerHTML) = window.history;
-// getWeather(cityInput);
-// fiveDayForecast(cityInput);
-// getSearch(cityInput);
-// //createHistoryList(cityInput);
-// //createHistory();
-// //getUvIndex(cityInput);
-// })
-
-  
