@@ -130,13 +130,14 @@ const fiveDayForecast = (city) => {
 
 
     //Get Dates for Five Day forecast
-    document.getElementById("day1").innerHTML = "Today"
-    document.getElementById("tomorrow").innerHTML = "Five Day Forecast- Starting Tomorrow"
+    document.getElementById("day1").innerHTML = "Current Weather"
+    //document.getElementById("tomorrow").innerHTML = "Five Day Forecast- Starting Tomorrow"
     document.getElementById("day2").innerHTML = data.list[0].dt_txt ;
     document.getElementById("day3").innerHTML = data.list[8].dt_txt;
     document.getElementById("day4").innerHTML = data.list[16].dt_txt;
     document.getElementById("day5").innerHTML = data.list[24].dt_txt;
     document.getElementById("day6").innerHTML = data.list[32].dt_txt;
+    console.log(dt_txt)
   });
 }
 

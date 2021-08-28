@@ -1,0 +1,9 @@
+body {
+  height: 600px;
+}
+
+.weatherContainer {
+  background-color: lightgreen;
+  margin-left: 30px;
+  margin-right: 30px;
+}
