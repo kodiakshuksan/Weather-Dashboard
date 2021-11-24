@@ -12,7 +12,7 @@ const cityInput = document.getElementById("userCity").value;
 //document.getElementById("searchHistory1".innerHTML) = window.history;
 getWeather(cityInput);
 fiveDayForecast(cityInput);
-getSearch(cityInput);
+//getSearch(cityInput);
 //createHistoryList(cityInput);
 //createHistory();
 //getUvIndex(cityInput);
@@ -130,14 +130,17 @@ const fiveDayForecast = (city) => {
 
 
     //Get Dates for Five Day forecast
-    document.getElementById("day1").innerHTML = "Current Weather"
+    document.getElementById("day1").innerHTML = "Current Weather";
     //document.getElementById("tomorrow").innerHTML = "Five Day Forecast- Starting Tomorrow"
-    document.getElementById("day2").innerHTML = data.list[0].dt_txt ;
+    document.getElementById("day2").innerHTML = data.list[0].dt.toDateString();
     document.getElementById("day3").innerHTML = data.list[8].dt_txt;
     document.getElementById("day4").innerHTML = data.list[16].dt_txt;
     document.getElementById("day5").innerHTML = data.list[24].dt_txt;
     document.getElementById("day6").innerHTML = data.list[32].dt_txt;
-    console.log(dt_txt)
+    console.log(data.list[0].dt_txt)
+
+
+    
   });
 }
 
@@ -151,6 +154,23 @@ const makeWeek = () => {
   
   };
   makeWeek();
+
+  //Display Date
+var today = luxon.DateTime.local();
+
+var hour = today.c.hour;
+console.log(today.c.hour)
+console.log(today)
+var hour = today.c.hour;
+console.log(hour)
+var date = today.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' });
+console.log(date)
+var changeFormat = today.toLocaleString(DateTime.DATE_MED); //=>  '4/20/2017'
+var newFormat = date.assign(DateTime.DATE_MED, { weekday: 'long' });
+var forPage = dt.toLocaleString(newFormat);
+
+//plannerDate.innerHTML = date;
+
   
 //To Do: History Search that will display links to past cities searched
 
