@@ -132,7 +132,7 @@ const fiveDayForecast = (city) => {
     //Get Dates for Five Day forecast
     document.getElementById("day1").innerHTML = "Current Weather";
     //document.getElementById("tomorrow").innerHTML = "Five Day Forecast- Starting Tomorrow"
-    document.getElementById("day2").innerHTML = data.list[0].dt.toDateString();
+    document.getElementById("day2").innerHTML = data.list[0].dt_txt;
     document.getElementById("day3").innerHTML = data.list[8].dt_txt;
     document.getElementById("day4").innerHTML = data.list[16].dt_txt;
     document.getElementById("day5").innerHTML = data.list[24].dt_txt;
@@ -156,18 +156,18 @@ const makeWeek = () => {
   makeWeek();
 
   //Display Date
-var today = luxon.DateTime.local();
+// var today = luxon.DateTime.local();
 
-var hour = today.c.hour;
-console.log(today.c.hour)
-console.log(today)
-var hour = today.c.hour;
-console.log(hour)
-var date = today.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' });
-console.log(date)
-var changeFormat = today.toLocaleString(DateTime.DATE_MED); //=>  '4/20/2017'
-var newFormat = date.assign(DateTime.DATE_MED, { weekday: 'long' });
-var forPage = dt.toLocaleString(newFormat);
+// var hour = today.c.hour;
+// console.log(today.c.hour)
+// console.log(today)
+// var hour = today.c.hour;
+// console.log(hour)
+// var date = today.toLocaleString({ month: 'long', day: 'numeric', year: 'numeric' });
+// console.log(date)
+// var changeFormat = today.toLocaleString(DateTime.DATE_MED); //=>  '4/20/2017'
+// var newFormat = date.assign(DateTime.DATE_MED, { weekday: 'long' });
+// var forPage = dt.toLocaleString(newFormat);
 
 //plannerDate.innerHTML = date;
 
